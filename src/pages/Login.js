@@ -4,10 +4,10 @@ import {Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleShee
 export default function Login() {
     return (
     <View style={styles.container}>
-        <Image source={require('../assets/logo.png')} />
+        <Image style={styles.logo} source={require('../assets/logo.png')} />
 
         <KeyboardAvoidingView style={styles.form}>
-            <Text style={styles.label}>E-MAIL *</Text>
+            <Text style={styles.label}>E-mail *</Text>
             <TextInput
                 style={styles.input}
                 placeholder="Seu e-mail"
@@ -15,7 +15,7 @@ export default function Login() {
                 keyboardType="email-address"
             />
 
-            <Text style={styles.label}>SENHA *</Text>
+            <Text style={styles.label}>Senha *</Text>
             <TextInput
                 style={styles.input}
                 secureTextEntry={true}
@@ -40,6 +40,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
+    logo: {
+            width: 283,
+            height: 113,
+    },
     form: {
     },
     input: {
@@ -51,5 +55,10 @@ const styles = StyleSheet.create({
         height: 44,
         marginBottom: 20,
         borderRadius: 2
-    },
+    }, 
+    button: {
+        alignItems: 'center',
+        backgroundColor: '#DDDDDD',
+        padding: 10,
+      }
 });
