@@ -1,12 +1,20 @@
 import React from 'react';
-import {Button, Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleSheet, Image } from 'react-native';
+import {Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleSheet, Image } from 'react-native';
 
-export default function Login({ navigation }) {
+export default function Cadastro() {
     return (
     <View style={styles.container}>
         <Image style={styles.logo} source={require('../assets/logo.png')} />
 
         <KeyboardAvoidingView style={styles.form}>
+        <Text style={styles.label}>Nome Completo *</Text>
+            <TextInput
+                style={styles.input}
+                placeholder="José da Silva"
+                placeholderTextColor="#999"
+                keyboardType="default"
+            />
+
             <Text style={styles.label}>E-mail *</Text>
             <TextInput
                 style={styles.input}
@@ -25,13 +33,7 @@ export default function Login({ navigation }) {
             />
 
             <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText}>Fazer Login</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button}>
-                <Button
-                    title="Cadastre-se"
-                    onPress={() => navigation.navigate('Cadastro')}
-                />
+                <Text style={styles.buttonText}>Criar Conta</Text>
             </TouchableOpacity>
         </KeyboardAvoidingView>
 
