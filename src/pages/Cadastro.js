@@ -4,16 +4,40 @@ import {Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleShee
 export default function Cadastro() {
     return (
     <View style={styles.container}>
-        <Image style={styles.logo} source={require('../assets/logo.png')} />
+        <Image style={styles.logo} source={require('../assets/logotravessia.png')} />
 
         <KeyboardAvoidingView style={styles.form}>
-        <Text style={styles.label}>Nome Completo *</Text>
+            <Text style={styles.label}>Nome Completo *</Text>
             <TextInput
                 style={styles.input}
                 placeholder="José da Silva"
                 placeholderTextColor="#999"
                 keyboardType="default"
             />
+
+            <Text style={styles.label}>Endereço *</Text>
+            <TextInput
+                style={styles.input}
+                placeholder="Avenida Paulista, 1003"
+                placeholderTextColor="#999"
+                keyboardType="default"
+            />
+
+            <Text style={styles.label}>Estado *</Text>
+            <TextInput
+                style={styles.input}
+                placeholder="SP"
+                placeholderTextColor="#999"
+                keyboardType="default"
+            />
+
+            <Text style={styles.label}>Cidade *</Text>
+            <TextInput
+                style={styles.input}
+                placeholder="São Paulo"
+                placeholderTextColor="#999"
+                keyboardType="default"
+            />     
 
             <Text style={styles.label}>E-mail *</Text>
             <TextInput
@@ -49,6 +73,10 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     logo: {
+        width: 120,
+        height: 120,
+        },
+    logoPrefeitura: {
             width: 283,
             height: 113,
     },
