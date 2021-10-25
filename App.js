@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from './src/pages/Login';
 import Cadastro from './src/pages/Cadastro';
+import Homepage from './src/pages/Homepage';
 
 function HomeScreen({ navigation }) {
   return (
@@ -27,6 +28,7 @@ export default function App() {
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Cadastro" component={Cadastro} />
+      <Stack.Screen name="Homepage" component={Homepage} />
     </Stack.Navigator>
   </NavigationContainer>
     /* <View style={styles.container}>

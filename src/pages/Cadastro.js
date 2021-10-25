@@ -75,7 +75,9 @@ const styles = StyleSheet.create({
     logo: {
         width: 120,
         height: 120,
-        },
+        marginTop: 30,
+        marginBottom: 30
+    },
     logoPrefeitura: {
             width: 283,
             height: 113,

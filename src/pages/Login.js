@@ -25,7 +25,10 @@ export default function Login({ navigation }) {
             />
 
             <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText}>Fazer Login</Text>
+                 <Button
+                    onPress={() => navigation.navigate('Homepage')}
+                    title="Fazer Login"
+                />
             </TouchableOpacity>
             <TouchableOpacity style={styles.button}>
                 <Button
@@ -49,7 +52,9 @@ const styles = StyleSheet.create({
     logo: {
         width: 120,
         height: 120,
-        },
+        marginTop: 30,
+        marginBottom: 30
+    },
     logoPrefeitura: {
             width: 283,
             height: 113,
