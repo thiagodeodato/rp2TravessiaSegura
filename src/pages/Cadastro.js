@@ -1,7 +1,19 @@
 import React from 'react';
-import {Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleSheet, Image } from 'react-native';
+import {Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleSheet, Image, Button } from 'react-native';
+import * as DocumentPicker from 'expo-document-picker';
 
 export default function Cadastro() {
+    const selectOneFile = async () => {
+
+        let result = await DocumentPicker.getDocumentAsync({});
+        if(result.uri === undefined){
+            alert('Não foi possível fazer o envio do documento.')
+        } else {
+            alert('O documento será analisado e caso seja aprovado será possível solicitar o cartão.')
+        }
+        console.log(result);
+    }
+
     return (
     <View style={styles.container}>
         <Image style={styles.logo} source={require('../assets/logotravessia.png')} />
@@ -55,6 +67,14 @@ export default function Cadastro() {
                 placeholderTextColor="#999"
                 keyboardType="default"
             />
+            <Text style={styles.label}>Documento comprovante *</Text>
+             <TouchableOpacity style={styles.backgroundColor}>
+                <Button style={styles.buttonFile}
+                    title="Selecione o Documento"
+                    activeOpacity={0.5}
+                    onPress={selectOneFile}     
+                />
+            </TouchableOpacity>
 
             <TouchableOpacity style={styles.button}>
                 <Text style={styles.buttonText}>Criar Conta</Text>

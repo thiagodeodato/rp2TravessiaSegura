@@ -1,41 +1,28 @@
 import React from 'react';
-import {Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleSheet, Image, Button, FlatList, Dimensions} from 'react-native';
-import * as DocumentPicker from 'expo-document-picker';
+import {Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleSheet, Image, Button, FlatList, Dimensions, ScrollView} from 'react-native';
+import Slider from '../components/Slider';
 
-const { width, height } = Dimensions.get('screen');
-
-const data = [
+const images = [
+    'https://exame.com/wp-content/uploads/2017/05/thinkstockphotos-512729096-e1493815119644.jpg',
     'https://exame.com/wp-content/uploads/2017/05/thinkstockphotos-512729096-e1493815119644.jpg'
 ]
 
-const imageW = width * 0.7;
+const { width, height } = Dimensions.get('screen');
+
+/* const imageW = width * 0.7;
 const ImageH = imageW * 1.54;
-
+ */
 export default function Homepage() {
-
-
-    const selectOneFile = async () => {
-
-        let result = await DocumentPicker.getDocumentAsync({});
-        alert(result.uri);
-        console.log(result);
-    }
-    
+  
     return (
     <View style={styles.container}>
-        <Image style={styles.logo} source={require('../assets/logotravessia.png')} />
+        <View style={styles.container}>
+            <Slider images = {images}/>
+        </View>
 
-        <KeyboardAvoidingView style={styles.form}>
-            <Text style={styles.label}>Nome Completo *</Text>
-            <TextInput
-                style={styles.input}
-                placeholder="José da Silva"
-                placeholderTextColor="#999"
-                keyboardType="default"
-            />
-        </KeyboardAvoidingView>
-        
-        <View style={StyleSheet.absoluteFillObject}>
+
+        {/* CARROUSEL COMPLEXO */}
+        {/* <View style={StyleSheet.absoluteFillObject}>
             {data.map((image, index) => {
                 return <Image
                     key={`image-${index}`}
@@ -62,15 +49,7 @@ export default function Homepage() {
                     }}/>
                     </View>
             }}
-        />
-
-        <TouchableOpacity style={styles.backgroundColor}>
-            <Button style={styles.buttonFile}
-                title="Selecione o Documento"
-                activeOpacity={0.5}
-                onPress={selectOneFile}     
-            />
-        </TouchableOpacity>
+        /> */}
 
     </View>
     
@@ -82,13 +61,20 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginTop: 50,
+        width,
+        height
     },
     logo: {
         width: 120,
         height: 120,
         marginTop: 30,
         marginBottom: 30
+        },
+    fileLabel: {
+        margin: 15,
+        fontSize: 20,
         },
     logoPrefeitura: {
             width: 283,
@@ -122,4 +108,10 @@ const styles = StyleSheet.create({
     button: {
     marginHorizontal: 60,
     },
+    pagination: {
+        flexDirection: 'row',
+        position: 'absolute',
+        bottom: 0,
+        alignSelf: 'center'
+    }
 });
