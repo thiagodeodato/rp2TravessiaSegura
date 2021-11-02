@@ -4,6 +4,7 @@ import {Button, Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, S
 export default function Login({ navigation }) {
     return (
     <View style={styles.container}>
+            
         <Image style={styles.logo} source={require('../assets/logotravessia.png')} />
 
         <KeyboardAvoidingView style={styles.form}>

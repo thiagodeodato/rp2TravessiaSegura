@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleSheet, Image, Button } from 'react-native';
+import {Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleSheet, Image, Button, ScrollView, Input } from 'react-native';
 import * as DocumentPicker from 'expo-document-picker';
 
 export default function Cadastro() {
@@ -17,7 +17,10 @@ export default function Cadastro() {
     return (
     <View style={styles.container}>
         <Image style={styles.logo} source={require('../assets/logotravessia.png')} />
-
+            <ScrollView
+            
+            style = {styles.scrollView}>
+            
         <KeyboardAvoidingView style={styles.form}>
             <Text style={styles.label}>Nome Completo *</Text>
             <TextInput
@@ -25,6 +28,30 @@ export default function Cadastro() {
                 placeholder="José da Silva"
                 placeholderTextColor="#999"
                 keyboardType="default"
+            />
+            
+            <Text style={styles.label}> CPF *</Text>
+            <TextInput
+                style={styles.input}
+                placeholder="32673387493"
+                placeholderTextColor="#999"
+                keyboardType="numeric"
+            />
+
+            <Text style={styles.label}> Data de Nascimento *</Text>
+            <TextInput
+                style={styles.input}
+                placeholder="Coloque sua data de nascimento"
+                placeholderTextColor="#999"
+                keyboardType="numeric"
+            />
+
+            <Text style={styles.label}> CEP *</Text>
+            <TextInput
+                style={styles.input}
+                placeholder="02201000"
+                placeholderTextColor="#999"
+                keyboardType="numeric"
             />
 
             <Text style={styles.label}>Endereço *</Text>
@@ -49,7 +76,7 @@ export default function Cadastro() {
                 placeholder="São Paulo"
                 placeholderTextColor="#999"
                 keyboardType="default"
-            />     
+            />
 
             <Text style={styles.label}>E-mail *</Text>
             <TextInput
@@ -67,12 +94,22 @@ export default function Cadastro() {
                 placeholderTextColor="#999"
                 keyboardType="default"
             />
+
+            <Text style={styles.label}> Condição de Mobilidade Reduzida *</Text>
+            <TextInput
+                style={styles.input}
+                placeholder="Paralisia na perna direita"
+                placeholderTextColor="#999"
+                keyboardType="default"
+            />
+
+
             <Text style={styles.label}>Documento comprovante *</Text>
-             <TouchableOpacity style={styles.backgroundColor}>
+            <TouchableOpacity style={styles.backgroundColor}>
                 <Button style={styles.buttonFile}
                     title="Selecione o Documento"
                     activeOpacity={0.5}
-                    onPress={selectOneFile}     
+                    onPress={selectOneFile}
                 />
             </TouchableOpacity>
 
@@ -80,7 +117,7 @@ export default function Cadastro() {
                 <Text style={styles.buttonText}>Criar Conta</Text>
             </TouchableOpacity>
         </KeyboardAvoidingView>
-
+            </ScrollView>
     </View>
     
     );
@@ -89,8 +126,8 @@ export default function Cadastro() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
+        //justifyContent: 'center',
+        //alignItems: 'center'
     },
     logo: {
         width: 120,
@@ -113,10 +150,13 @@ const styles = StyleSheet.create({
         height: 44,
         marginBottom: 20,
         borderRadius: 2
-    }, 
+    },
     button: {
         alignItems: 'center',
         backgroundColor: '#DDDDDD',
         padding: 10,
-      }
+    },
+    scrollView:{
+    marginHorizontal: 20,
+}
 });
