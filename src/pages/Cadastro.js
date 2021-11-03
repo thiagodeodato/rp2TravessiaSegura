@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleSheet, Image, Button, ScrollView, Input } from 'react-native';
 import * as DocumentPicker from 'expo-document-picker';
+//import Checkbox from "./Checkbox";
 
 export default function Cadastro() {
     const selectOneFile = async () => {
@@ -13,6 +14,7 @@ export default function Cadastro() {
         }
         console.log(result);
     }
+
 
     return (
     <View style={styles.container}>
@@ -41,7 +43,7 @@ export default function Cadastro() {
             <Text style={styles.label}> Data de Nascimento *</Text>
             <TextInput
                 style={styles.input}
-                placeholder="Coloque sua data de nascimento"
+                placeholder="05081999"
                 placeholderTextColor="#999"
                 keyboardType="numeric"
             />
@@ -103,9 +105,8 @@ export default function Cadastro() {
                 keyboardType="default"
             />
 
-
             <Text style={styles.label}>Documento comprovante *</Text>
-            <TouchableOpacity style={styles.backgroundColor}>
+            <TouchableOpacity style={styles.buttonFile}>
                 <Button style={styles.buttonFile}
                     title="Selecione o Documento"
                     activeOpacity={0.5}
@@ -119,15 +120,18 @@ export default function Cadastro() {
         </KeyboardAvoidingView>
             </ScrollView>
     </View>
-    
+
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        //justifyContent: 'center',
-        //alignItems: 'center'
+        //flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#FAFAFA',
+        
+
     },
     logo: {
         width: 120,
@@ -136,10 +140,13 @@ const styles = StyleSheet.create({
         marginBottom: 30
     },
     logoPrefeitura: {
-            width: 283,
-            height: 113,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 283,
+        height: 113,
     },
     form: {
+        marginBottom:30
     },
     input: {
         borderWidth: 1,
@@ -153,10 +160,14 @@ const styles = StyleSheet.create({
     },
     button: {
         alignItems: 'center',
-        backgroundColor: '#DDDDDD',
+        backgroundColor: '#73D602',
         padding: 10,
+        margin: 20
     },
     scrollView:{
     marginHorizontal: 20,
-}
+},
+    buttonFile:{
+    marginTop: 5
+    }
 });
