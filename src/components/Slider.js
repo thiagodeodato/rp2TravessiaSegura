@@ -3,10 +3,9 @@ import {Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleShee
 import * as DocumentPicker from 'expo-document-picker';
 import { render } from 'react-dom';
 
-const { width, height } = Dimensions.get('screen');
+const { width } = Dimensions.get('window');
 
-const imageW = width * 0.7;
-const ImageH = imageW * 1.54;
+const height = width * 0.6;
 
 export default class Slider extends React.Component {
     state = {
@@ -21,15 +20,13 @@ export default class Slider extends React.Component {
     }
     render(){
         return (
-        <View style={styles.container}>
-            <Image style={styles.logo} source={require('../assets/logotravessia.png')} />
-
             <View style={styles.container}>
                 <ScrollView
                     pagingEnabled
                     horizontal
-                    showsHorizontalScrollIndicator={false}
                     onScroll={this.change}
+                    showsHorizontalScrollIndicator={false}
+                    style={styles.container}
                 >
                     {
                         this.props.images.map((image, index) => (
@@ -43,13 +40,12 @@ export default class Slider extends React.Component {
                 </ScrollView>
                 <View style={styles.pagination}>
                     {
-                        this.props.images.map((i, k) => 
+                        this.props.images.map((i, k) => (
                             <Text key={k} style={k==this.state.active ? styles.pagingActiveText : styles.pagingText}>◯</Text>
-                            )
+                            ))
                     }
                 </View>
             </View>
-        </View>
         )
     };
 }
@@ -57,12 +53,13 @@ export default class Slider extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 50,
         width,
-        height
+        height,
+    },
+    image: {
+        width,
+        height,
+        resizeMode: 'cover'
     },
     pagination: {
         flexDirection: 'row',
@@ -71,10 +68,12 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     pagingText :{
+        fontSize: (width / 25),
         color: '#888',
-        margin: 3  
+        margin: 3,
     },
     pagingActiveText: {
+        fontSize: (width / 25),
         color: '#fff',
         margin: 3
     }

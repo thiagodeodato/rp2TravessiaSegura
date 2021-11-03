@@ -3,54 +3,21 @@ import {Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleShee
 import Slider from '../components/Slider';
 
 const images = [
-    'https://exame.com/wp-content/uploads/2017/05/thinkstockphotos-512729096-e1493815119644.jpg',
-    'https://exame.com/wp-content/uploads/2017/05/thinkstockphotos-512729096-e1493815119644.jpg'
+    'https://www.prefeitura.sp.gov.br/cidade/secretarias/upload/saude/capa%20Horizontal%20para%20site5-01%20(1).png',
+    'https://s2.glbimg.com/qXpd31eHORSQrRVijS2j-HgXYAM=/53x10:1870x1000/1008x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2021/K/b/iGU8Z0T1yEQJ3oghuOpw/acervo-bdsp-bdbr-limpo-20210615-0545-frame-214119.jpeg',
+    'https://i.ytimg.com/vi/2fSsGH8eBYM/maxresdefault.jpg'
 ]
 
 const { width, height } = Dimensions.get('screen');
 
-/* const imageW = width * 0.7;
-const ImageH = imageW * 1.54;
- */
 export default function Homepage() {
   
     return (
     <View style={styles.container}>
         <View style={styles.container}>
+            <Text style={styles.carouselText}>Fique por dentro dos eventos da prefeitura</Text>
             <Slider images = {images}/>
         </View>
-
-
-        {/* CARROUSEL COMPLEXO */}
-        {/* <View style={StyleSheet.absoluteFillObject}>
-            {data.map((image, index) => {
-                return <Image
-                    key={`image-${index}`}
-                    source={{uri: image}}
-                    style={[
-                        StyleSheet.absoluteFillObject
-                    ]}
-                    blurRadius={50}
-                    />
-            })}
-        </View>
-        <FlatList
-            data={data}
-            keyExtractor={(_, index) => index.toString()}
-            horizontal
-            pagingEnabled
-            renderItem={({item}) => {
-                return <View style={{width, justifyContent: 'center', alignItems: 'center'}}>
-                    <Image source={{uri: item}} style={{
-                        width: imageW,
-                        height: imageH,
-                        resizeMode: 'cover',
-                        borderRadius: 16
-                    }}/>
-                    </View>
-            }}
-        /> */}
-
     </View>
     
     );
@@ -60,11 +27,15 @@ export default function Homepage() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 50,
-        width,
-        height
+        marginTop: 20,
+        marginRight: 20,
+        marginLeft: 20
+    },
+    carouselText: {
+        fontSize: 16,
+        padding: 10,
+        
     },
     logo: {
         width: 120,
