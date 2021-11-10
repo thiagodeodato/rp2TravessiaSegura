@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleSheet, Image, Button, FlatList, Dimensions, ScrollView} from 'react-native';
+import {Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleSheet, Image, Button, FlatList, Dimensions, ScrollView, Platform} from 'react-native';
 import Slider from '../components/Slider'
 ;
 
@@ -21,29 +21,36 @@ export default function Homepage() {
 
     return (
     <View style= {styles.container}> 
-    <ScrollView
-        style = {styles.scrollView}>
-    <View style={styles.container}>
-        <View style={styles.events}>
-        <Text style={styles.carouselText}>Fique por dentro dos eventos da prefeitura</Text>
-        <Slider images = {images}/>
-        </View>
-        <View style= {styles.form}>
-        <Text style={styles.carouselText}>Últimas notícias em sua região</Text>
-        <Slider images = {news}/>
-        </View>
+    {   Platform.OS === 'web' ? 
+        <ScrollView
+            style = {styles.scrollView}>
+            <View style={styles.container}>
+                <View style={styles.events}>
+                    <Text style={styles.carouselText}>Fique por dentro dos eventos da prefeitura</Text>
+                    <Slider images = {images}/>
+                </View>
+                    <View style= {styles.form}>
+                    <Text style={styles.carouselText}>Últimas notícias em sua região</Text>
+                <Slider images = {news}/>
+                </View>            
+            </View>
+        </ScrollView> 
+    :  
+        <View style={styles.container}>
+            <View style={styles.events}>
+                <Text style={styles.carouselText}>Fique por dentro dos eventos da prefeitura</Text>
+                <Slider images = {images}/>
+            </View>
+                <View style= {styles.form}>
+                <Text style={styles.carouselText}>Últimas notícias em sua região</Text>
+            <Slider images = {news}/>
+            </View>            
+        </View> }
+    
         
-    </View>
-    </ScrollView>
     </View>
         );
 }
-
-
-
-
-
-
 
 const styles = StyleSheet.create({
     container: {
