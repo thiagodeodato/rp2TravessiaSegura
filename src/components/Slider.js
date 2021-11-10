@@ -1,12 +1,17 @@
 import React from 'react';
-import {Text, View, StyleSheet, Image, Dimensions, ScrollView} from 'react-native';
+import {Text, View, StyleSheet, Image, Dimensions, ScrollView, Platform} from 'react-native';
 import * as DocumentPicker from 'expo-document-picker';
 import { render } from 'react-dom';
 
-const { width } = Dimensions.get('window');
+var height = 480;
+var { width } = Dimensions.get('window');
 
-const height = width * 0.6;
-
+if (Platform.OS === 'web') {
+    width = 1200;
+    height = 600;
+} else {
+    height = width * 0.6;
+}
 export default class Slider extends React.Component {
     state = {
         active: 0

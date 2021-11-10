@@ -1,9 +1,11 @@
 import React from 'react';
-import {Button, Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleSheet, Image } from 'react-native';
+import {Button, Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleSheet, Image, ScrollView } from 'react-native';
 
 export default function Login({ navigation }) {
     return (
     <View style={styles.container}>
+            <ScrollView
+            style = {styles.scrollView}>
             
         <Image style={styles.logo} source={require('../assets/logotravessia.png')} />
 
@@ -26,7 +28,7 @@ export default function Login({ navigation }) {
             />
 
             <TouchableOpacity style={styles.button}>
-                 <Button
+                <Button
                     onPress={() => navigation.navigate('Homepage')}
                     title="Fazer Login"
                 />
@@ -38,7 +40,7 @@ export default function Login({ navigation }) {
                 />
             </TouchableOpacity>
         </KeyboardAvoidingView>
-
+        </ScrollView>
     </View>
     
     );
@@ -76,5 +78,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#DDDDDD',
         padding: 10,
-      }
+    },
+    scrollView:{
+        marginHorizontal: 20,
+    },
 });

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleSheet, Image, Button, FlatList, Dimensions, ScrollView} from 'react-native';
-import Slider from '../components/Slider';
+import Slider from '../components/Slider'
+;
 
 const images = [
     'https://www.prefeitura.sp.gov.br/cidade/secretarias/upload/saude/capa%20Horizontal%20para%20site5-01%20(1).png',
@@ -8,20 +9,40 @@ const images = [
     'https://i.ytimg.com/vi/2fSsGH8eBYM/maxresdefault.jpg'
 ]
 
+const news = [
+    'https://itu.sp.gov.br/wp-content/uploads/2020/03/BOLETIM.jpg',
+    'https://itu.sp.gov.br/wp-content/uploads/2021/11/boletim411-site-novo.jpg'
+
+]
+
 const { width, height } = Dimensions.get('screen');
 
 export default function Homepage() {
-  
+
     return (
+    <View style= {styles.container}> 
+    <ScrollView
+        style = {styles.scrollView}>
     <View style={styles.container}>
-        <View style={styles.container}>
-            <Text style={styles.carouselText}>Fique por dentro dos eventos da prefeitura</Text>
-            <Slider images = {images}/>
+        <View style={styles.events}>
+        <Text style={styles.carouselText}>Fique por dentro dos eventos da prefeitura</Text>
+        <Slider images = {images}/>
         </View>
+        <View style= {styles.form}>
+        <Text style={styles.carouselText}>Últimas notícias em sua região</Text>
+        <Slider images = {news}/>
+        </View>
+        
     </View>
-    
-    );
+    </ScrollView>
+    </View>
+        );
 }
+
+
+
+
+
 
 
 const styles = StyleSheet.create({
@@ -31,12 +52,19 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginRight: 20,
         marginLeft: 20
+        },
+    events:{
+        flex: 1,
+        alignItems: 'center',
+        margin: 50
     },
     carouselText: {
         fontSize: 16,
         padding: 10,
+        alignItems: 'center',
+        fontWeight: 'bold',
         
-    },
+        },
     logo: {
         width: 120,
         height: 120,
@@ -48,11 +76,16 @@ const styles = StyleSheet.create({
         fontSize: 20,
         },
     logoPrefeitura: {
-            width: 283,
-            height: 113,
-    },
+        width: 283,
+        height: 113,
+        }  ,
     form: {
-    },
+        flex: 1,
+        alignItems: 'center',
+        margin: 50
+        
+        
+        },
     input: {
         borderWidth: 1,
         borderColor: '#444',
@@ -62,27 +95,27 @@ const styles = StyleSheet.create({
         height: 44,
         marginBottom: 20,
         borderRadius: 2
-    }, 
+        }, 
     buttonFile: {
         alignItems: 'center',
         backgroundColor: '#DDDDDD',
         padding: 10,
-      },
+        },
     background: {
     backgroundColor:
         "radial-gradient(ellipse at left bottom,    rgb(163, 237, 255) 0%,    rgba(57, 232, 255, 0.9) 59%,    rgba(48, 223, 214, 0.9) 100% )",
-    },
+        },
     file: {
     color: "black",
     marginHorizontal: 145,
-    },
+        },
     button: {
-    marginHorizontal: 60,
-    },
+        marginHorizontal: 60,
+        },
     pagination: {
         flexDirection: 'row',
         position: 'absolute',
         bottom: 0,
         alignSelf: 'center'
-    }
+    },
 });
