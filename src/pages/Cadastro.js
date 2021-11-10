@@ -19,11 +19,12 @@ export default function Cadastro() {
 
 
     return (
-    <View style={styles.container}>
-        <Image style={styles.logo} source={require('../assets/logotravessia.png')} />
-            <ScrollView
+        <ScrollView
             
             style = {styles.scrollView}>
+    <View style={styles.container}>
+        <Image style={styles.logo} source={require('../assets/logotravessia.png')} />
+            
             
         <KeyboardAvoidingView style={styles.form}>
             <Text style={styles.label}>Nome Completo *</Text>
@@ -124,8 +125,9 @@ export default function Cadastro() {
                 <Text style={styles.buttonText}>Criar Conta</Text>
             </TouchableOpacity>
         </KeyboardAvoidingView>
-            </ScrollView>
+            
     </View>
+    </ScrollView>
 
     );
 }
@@ -171,7 +173,7 @@ const styles = StyleSheet.create({
         margin: 20
     },
     scrollView:{
-    marginHorizontal: 20,
+    marginHorizontal: 10,
 },
     buttonFile:{
     marginTop: 5

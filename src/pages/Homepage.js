@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     events:{
         flex: 1,
         alignItems: 'center',
-        margin: 50
+        margin: 10
     },
     carouselText: {
         fontSize: 16,
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     form: {
         flex: 1,
         alignItems: 'center',
-        margin: 50
+        margin: 10
         
         
         },
