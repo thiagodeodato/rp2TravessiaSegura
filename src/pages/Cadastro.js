@@ -1,7 +1,8 @@
 import React from 'react';
 import {Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleSheet, Image, Button, ScrollView, Input } from 'react-native';
 import * as DocumentPicker from 'expo-document-picker';
-import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
+import RadioButton from '../components/RadioButton';
+//import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 //import Checkbox from "./Checkbox";
 
 export default function Cadastro() {
@@ -14,12 +15,7 @@ export default function Cadastro() {
             alert('O documento será analisado e caso seja aprovado será possível solicitar o cartão.')
         }
         console.log(result);
-    }
-    
-    var radio_props = [
-        {label: 'Temporária', value: 0 },
-        {label: 'Permanente', value: 1 }
-    ];
+    }  
 
 
     return (
@@ -111,9 +107,7 @@ export default function Cadastro() {
                 keyboardType="default"
             />
 
-            <RadioForm
-                radio_props={radio_props}
-                initial={0}
+            <RadioButton
                 onPress={(value) => {this.setState({value:value})}}
             />
 
