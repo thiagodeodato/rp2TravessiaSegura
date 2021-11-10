@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleSheet, Image, Button, ScrollView, Input } from 'react-native';
 import * as DocumentPicker from 'expo-document-picker';
+import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 //import Checkbox from "./Checkbox";
 
 export default function Cadastro() {
@@ -14,6 +15,11 @@ export default function Cadastro() {
         }
         console.log(result);
     }
+    
+    var radio_props = [
+        {label: 'Temporária', value: 0 },
+        {label: 'Permanente', value: 1 }
+    ];
 
 
     return (
@@ -103,6 +109,12 @@ export default function Cadastro() {
                 placeholder="Paralisia na perna direita"
                 placeholderTextColor="#999"
                 keyboardType="default"
+            />
+
+            <RadioForm
+                radio_props={radio_props}
+                initial={0}
+                onPress={(value) => {this.setState({value:value})}}
             />
 
             <Text style={styles.label}>Documento comprovante *</Text>

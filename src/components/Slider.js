@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleSheet, Image, Button, FlatList, Dimensions, ScrollView} from 'react-native';
+import {Text, View, StyleSheet, Image, Dimensions, ScrollView} from 'react-native';
 import * as DocumentPicker from 'expo-document-picker';
 import { render } from 'react-dom';
 
