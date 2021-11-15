@@ -108,6 +108,14 @@ export default function Cadastro() {
                 keyboardType="default"
             />
 
+            <Text style={styles.label}> Sugestão de tempo para travessia </Text>
+            <TextInput
+                style={styles.input}
+                placeholder="Em segundos"
+                placeholderTextColor="#999"
+                keyboardType="numeric"
+            />
+
             <RadioButton
                 onPress={(value) => {this.setState({value:value})}}
             />

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleSheet, Image, Button, FlatList, Dimensions, ScrollView, Platform} from 'react-native';
+import {Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleSheet, Image, Button, FlatList, Dimensions, ScrollView, Platform, Alert} from 'react-native';
 import Slider from '../components/Slider'
 ;
 
@@ -15,16 +15,36 @@ const news = [
 
 ]
 
+const Message = () => 
+    Alert.alert (
+                "Seu pedido foi enviado a prefeitura",
+                "Para mais detalhes acompanhe o avanço, através do seu email cadastrado",
+                [
+                { text: "OK!", onPress: () => console.log("OK Pressed") }
+                ]   
+                );
+
 const { width, height } = Dimensions.get('screen');
 
 export default function Homepage() {
 
     return (
     <View style= {styles.container}> 
-    {   Platform.OS === 'web' ? 
+    {   
+    Platform.OS === 'web' ? 
+    
         <ScrollView
-            style = {styles.scrollView}>
-            <View style={styles.container}>
+        style = {styles.scrollView}>
+        <View style={styles.container}>
+
+        <TouchableOpacity style={styles.button}>
+                <Button style={styles.button}
+                title="Peça seu cartão para travessia"
+                activeOpacity={0.5}
+                color = "#FFC478"
+                onPress={Message}
+                />
+            </TouchableOpacity>
                 <View style={styles.events}>
                     <Text style={styles.carouselText}>Fique por dentro dos eventos da prefeitura</Text>
                     <Slider images = {images}/>
@@ -36,7 +56,16 @@ export default function Homepage() {
             </View>
         </ScrollView> 
     :  
+    
         <View style={styles.container}>
+        <TouchableOpacity style={styles.buttonCell}>
+                <Button style={styles.buttonCell}
+                title="Peça seu cartão para travessia"
+                color = "#1E3CFF"
+                activeOpacity={0.5}
+                onPress={Message}
+                />
+        </TouchableOpacity>
             <View style={styles.events}>
                 <Text style={styles.carouselText}>Fique por dentro dos eventos da prefeitura</Text>
                 <Slider images = {images}/>
@@ -45,14 +74,27 @@ export default function Homepage() {
                 <Text style={styles.carouselText}>Últimas notícias em sua região</Text>
             <Slider images = {news}/>
             </View>            
-        </View> }
-    
+        </View> 
         
+        }
     </View>
         );
 }
 
 const styles = StyleSheet.create({
+    button:{
+        alignItems: 'center',
+        padding: 10,
+        margin: 20
+    },
+
+    buttonCell:{
+        marginTop: 10,
+        backgroundColor: '#FFC478',
+        
+        
+    },
+
     container: {
         flex: 1,
         alignItems: 'center',
@@ -60,39 +102,39 @@ const styles = StyleSheet.create({
         marginRight: 20,
         marginLeft: 20
         },
+
     events:{
         flex: 1,
         alignItems: 'center',
         margin: 10
     },
+
     carouselText: {
         fontSize: 16,
         padding: 10,
         alignItems: 'center',
         fontWeight: 'bold',
-        
+
         },
+
     logo: {
         width: 120,
         height: 120,
         marginTop: 30,
         marginBottom: 30
         },
+
     fileLabel: {
         margin: 15,
         fontSize: 20,
         },
-    logoPrefeitura: {
-        width: 283,
-        height: 113,
-        }  ,
+
     form: {
         flex: 1,
         alignItems: 'center',
         margin: 10
-        
-        
         },
+
     input: {
         borderWidth: 1,
         borderColor: '#444',
@@ -103,22 +145,19 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         borderRadius: 2
         }, 
-    buttonFile: {
-        alignItems: 'center',
-        backgroundColor: '#DDDDDD',
-        padding: 10,
-        },
+
+
+
     background: {
     backgroundColor:
         "radial-gradient(ellipse at left bottom,    rgb(163, 237, 255) 0%,    rgba(57, 232, 255, 0.9) 59%,    rgba(48, 223, 214, 0.9) 100% )",
         },
+
     file: {
     color: "black",
     marginHorizontal: 145,
         },
-    button: {
-        marginHorizontal: 60,
-        },
+
     pagination: {
         flexDirection: 'row',
         position: 'absolute',
