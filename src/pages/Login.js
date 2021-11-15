@@ -2,12 +2,13 @@ import React from 'react';
 import {Button, Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleSheet, Image, ScrollView } from 'react-native';
 
 export default function Login({ navigation }) {
-    return (
+    return(
     <View style={styles.container}>
-            <ScrollView
-            style = {styles.scrollView}>
-            
+        <ScrollView
+        style = {styles.scrollView}>
+
         <Image style={styles.logo} source={require('../assets/logotravessia.png')} />
+        
 
         <KeyboardAvoidingView style={styles.form}>
             <Text style={styles.label}>E-mail *</Text>
@@ -29,7 +30,7 @@ export default function Login({ navigation }) {
 
             <TouchableOpacity style={styles.button}>
                 <Button
-                    onPress={() => navigation.navigate('Homepage')}
+                    onPress={() => navigation.navigate('Página Inicial')}
                     title="Fazer Login"
                 />
             </TouchableOpacity>
@@ -53,14 +54,10 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     logo: {
-        width: 120,
-        height: 120,
+        width: 150,
+        height: 150,
         marginTop: 30,
-        marginBottom: 30
-    },
-    logoPrefeitura: {
-            width: 283,
-            height: 113,
+        marginBottom: 30,
     },
     form: {
     },
@@ -76,7 +73,7 @@ const styles = StyleSheet.create({
     }, 
     button: {
         alignItems: 'center',
-        backgroundColor: '#DDDDDD',
+        
         padding: 10,
     },
     scrollView:{
