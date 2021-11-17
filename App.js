@@ -32,7 +32,7 @@ export default function App() {
       screenOptions={{
         headerTitleStyle: {
           fontWeight: 'bold',
-          fontSize: '20',
+          fontSize: '20', //Impacta na execucao do android mas nao no iphone
           alignItems: 'center',
           justifyContent: 'center'
         },

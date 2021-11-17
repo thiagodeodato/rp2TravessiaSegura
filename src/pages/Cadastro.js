@@ -108,10 +108,10 @@ export default function Cadastro() {
                 keyboardType="default"
             />
 
-            <Text style={styles.label}> Sugestão de tempo para travessia </Text>
+            <Text style={styles.label}> Sugestão de tempo de utilização do cartão </Text>
             <TextInput
                 style={styles.input}
-                placeholder="Em segundos"
+                placeholder="3 meses"
                 placeholderTextColor="#999"
                 keyboardType="numeric"
             />
