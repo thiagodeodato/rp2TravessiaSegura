@@ -2,6 +2,7 @@ import React from 'react';
 import {Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleSheet, Image, Button, ScrollView, Input } from 'react-native';
 import * as DocumentPicker from 'expo-document-picker';
 import RadioButton from '../components/RadioButton';
+import firebase from '../config/firebaseconfig';
 //import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 //import Checkbox from "./Checkbox";
 
@@ -16,7 +17,25 @@ export default function Cadastro() {
         }
         console.log(result);
     }  
+    
+    const dbRef = firebase.database().ref();
+    console.log(dbRef);
 
+    //TESTE DE CONEXAO
+
+
+
+    dbRef.child("users").child(1).get().then((snapshot) => {
+        if (snapshot.exists()) {
+          console.log(snapshot.val());
+        } else {
+          console.log("No data available");
+        }
+      }).catch((error) => {
+        console.error(error);
+      });
+
+    /* var radioValue = 0; */
 
     return (
         <ScrollView
@@ -25,7 +44,7 @@ export default function Cadastro() {
     <View style={styles.container}>
         <Image style={styles.logo} source={require('../assets/logotravessia.png')} />
             
-            
+        
         <KeyboardAvoidingView style={styles.form}>
             <Text style={styles.label}>Nome Completo *</Text>
             <TextInput
@@ -108,17 +127,34 @@ export default function Cadastro() {
                 keyboardType="default"
             />
 
-            <Text style={styles.label}> Sugestão de tempo de utilização do cartão </Text>
+            
+            
+            
+{/* 
+            <RadioButton
+                onPress={(value) => { 
+                    { 
+                        teste = value;
+                        console.log
+                    }
+                    this.setState({value:value})
+                    {this.radioValue = value} 
+                }}
+            /> */}
+
+            
+
+            <RadioButton
+                onPress={(value) => {this.setState({value:value})}}
+            />
+
+           {/*  { this.radioValue  === 0 && (<Text style={styles.label}> Sugestão de tempo de utilização do cartão </Text>)(
             <TextInput
                 style={styles.input}
                 placeholder="3 meses"
                 placeholderTextColor="#999"
                 keyboardType="numeric"
-            />
-
-            <RadioButton
-                onPress={(value) => {this.setState({value:value})}}
-            />
+            />)} */}
 
             <Text style={styles.label}>Documento comprovante *</Text>
             <TouchableOpacity style={styles.buttonFile}>
