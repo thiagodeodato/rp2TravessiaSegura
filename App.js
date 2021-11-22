@@ -47,9 +47,9 @@ export default function App() {
           component={Homepage}
           options={{
             title: 'Página Inicial',
-            headerRight: () => <ActionBarImage/>,
+            headerLeft: () => <ActionBarImage/>,
             headerBackVisible: true, // tirar na apresentação 
-            headerLeft: () => <Notification_bell/>
+            headerRight: () => <Notification_bell/>
           }}/>
     </Stack.Navigator>
   </NavigationContainer>

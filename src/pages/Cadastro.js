@@ -49,12 +49,12 @@ export default function Cadastro() {
 
     dbRef.child("clientesCadastro").child('thiago').get().then((snapshot) => {
         if (snapshot.exists()) {
-          console.log(snapshot.val());
+          //console.log(snapshot.val());
         } else {
-          console.log("No data available");
+          //console.log("No data available");
         }
       }).catch((error) => {
-        console.error(error);
+        //console.error(error);
       });
 
     /* var radioValue = 0; */
@@ -67,7 +67,11 @@ export default function Cadastro() {
         <Image style={styles.logo} source={require('../assets/logotravessia.png')} />
             
         
-        <KeyboardAvoidingView style={styles.form}>
+        <KeyboardAvoidingView 
+           
+            behavior={Platform.OS === "ios" ? "padding" : "height"} 
+            style={styles.form}>
+        
             <Text style={styles.label}>Nome Completo *</Text>
             <TextInput
                 style={styles.input}

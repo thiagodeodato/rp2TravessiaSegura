@@ -1,18 +1,12 @@
 import React from 'react';
-import {Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleSheet, Image, Button, FlatList, Dimensions, ScrollView, Platform, Alert} from 'react-native';
-import Slider from '../components/Slider'
-;
+import {Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleSheet, Image, Button, FlatList, Dimensions, ScrollView, Platform, Alert, ListItem, Icon,SafeAreaView} from 'react-native';
+import Slider from '../components/Slider';
+import { StatusBar } from 'expo-status-bar';
+
 
 const images = [
-    'https://www.prefeitura.sp.gov.br/cidade/secretarias/upload/saude/capa%20Horizontal%20para%20site5-01%20(1).png',
-    'https://s2.glbimg.com/qXpd31eHORSQrRVijS2j-HgXYAM=/53x10:1870x1000/1008x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2021/K/b/iGU8Z0T1yEQJ3oghuOpw/acervo-bdsp-bdbr-limpo-20210615-0545-frame-214119.jpeg',
-    'https://i.ytimg.com/vi/2fSsGH8eBYM/maxresdefault.jpg'
-]
-
-const news = [
-    'https://itu.sp.gov.br/wp-content/uploads/2020/03/BOLETIM.jpg',
-    'https://itu.sp.gov.br/wp-content/uploads/2021/11/boletim411-site-novo.jpg'
-
+    'https://s2.glbimg.com/RPyiMXN59PgbLde0Qsvsh15jadk=/0x0:1203x804/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2021/O/p/SLel3bQ2ycJRRQyzttkg/capa-lei-municipal-garante-acessibilidade-das-pessoas-com-deficiencia-ou-com-mobilidade-reduzida.png',
+    'https://i.calameoassets.com/210901164246-e6b48ead2c5c8c124c996b493296d380/large.jpg'
 ]
 
 const Message = () => 
@@ -36,28 +30,49 @@ export default function Homepage() {
         <ScrollView
         style = {styles.scrollView}>
         <View style={styles.container}>
+        <View>
+        <Text style = {styles.Hello}> 
+        Olá, João
+        </Text>
+        </View>
 
         <TouchableOpacity style={styles.button}>
                 <Button style={styles.button}
                 title="Peça seu cartão para travessia"
                 activeOpacity={0.5}
-                color = "#FFC478"
+                color = "##1E3CFF"
                 onPress={Message}
                 />
             </TouchableOpacity>
                 <View style={styles.events}>
-                    <Text style={styles.carouselText}>Fique por dentro dos eventos da prefeitura</Text>
+                    <Text style={styles.carouselText}>Principais notícias da sua cidade</Text>
                     <Slider images = {images}/>
                 </View>
                     <View style= {styles.form}>
-                    <Text style={styles.carouselText}>Últimas notícias em sua região</Text>
-                <Slider images = {news}/>
                 </View>            
             </View>
         </ScrollView> 
     :  
     
         <View style={styles.container}>
+
+        <View>
+        <Text style = {styles.Hello}> 
+        Olá, João
+        </Text>
+        </View>
+
+
+      
+
+
+        <View style = {styles.board}>
+        <Text style = {styles.textBoard}> 
+        Seu tempo de travessia é:
+        </Text>
+
+        </View>
+
         <TouchableOpacity style={styles.buttonCell}>
                 <Button style={styles.buttonCell}
                 title="Peça seu cartão para travessia"
@@ -65,14 +80,13 @@ export default function Homepage() {
                 activeOpacity={0.5}
                 onPress={Message}
                 />
+                
         </TouchableOpacity>
             <View style={styles.events}>
-                <Text style={styles.carouselText}>Fique por dentro dos eventos da prefeitura</Text>
+                <Text style={styles.carouselText}>Principais notícias da sua cidade</Text>
                 <Slider images = {images}/>
             </View>
                 <View style= {styles.form}>
-                <Text style={styles.carouselText}>Últimas notícias em sua região</Text>
-            <Slider images = {news}/>
             </View>            
         </View> 
         
@@ -82,6 +96,15 @@ export default function Homepage() {
 }
 
 const styles = StyleSheet.create({
+    board:{
+        margin: 20,
+        padding: 50,
+        flex:0.5,
+        backgroundColor: '#FFC478' 
+
+    },
+    
+    
     button:{
         alignItems: 'center',
         padding: 10,
@@ -92,11 +115,9 @@ const styles = StyleSheet.create({
         marginTop: 10,
         backgroundColor: '#FFC478',
         
-        
     },
 
     container: {
-        flex: 1,
         alignItems: 'center',
         marginTop: 20,
         marginRight: 20,
@@ -145,6 +166,23 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         borderRadius: 2
         }, 
+
+    Hello: {
+        fontWeight: 'bold',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: 20,
+        marginBottom: 5
+    },
+
+    textBoard:{
+        fontWeight: 'bold',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: 15,
+        color:'#1E3CFF',   
+
+    },
 
 
 
