@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleSheet, Image, Button, ScrollView, Input } from 'react-native';
 import * as DocumentPicker from 'expo-document-picker';
 import RadioButton from '../components/RadioButton';
@@ -7,6 +7,28 @@ import firebase from '../config/firebaseconfig';
 //import Checkbox from "./Checkbox";
 
 export default function Cadastro() {
+    
+    const [person, setPerson] = useState({ email: '', password: ''});
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [condition, setCondition] = useState('');
+
+
+    const clickSaveHandler = () => {
+        if(email !== '' && password !== ''){
+/*             console.log(email);
+            console.log(password); */
+            writeUserData(email, password, condition);
+        }
+    }
+
+    function writeUserData(email, password, condition){
+        firebase.database().ref('clientesCadastro/' + email).set({
+            password: password,
+            condition: condition
+        });
+    }
+
     const selectOneFile = async () => {
 
         let result = await DocumentPicker.getDocumentAsync({});
@@ -18,14 +40,14 @@ export default function Cadastro() {
         console.log(result);
     }  
     
+    
     const dbRef = firebase.database().ref();
-    console.log(dbRef);
+    //console.log(dbRef);
 
-    //TESTE DE CONEXAO
+    //TESTE DE CONEXAO PARA O CLIENTE THIAGO
 
 
-
-    dbRef.child("users").child(1).get().then((snapshot) => {
+    dbRef.child("clientesCadastro").child('thiago').get().then((snapshot) => {
         if (snapshot.exists()) {
           console.log(snapshot.val());
         } else {
@@ -108,6 +130,10 @@ export default function Cadastro() {
                 placeholder="Seu e-mail"
                 placeholderTextColor="#999"
                 keyboardType="email-address"
+                onChangeText={(value) =>                     
+                    //setPerson({email: value.substr(0, value.indexOf('@')),})
+                    setEmail(value.substr(0, value.indexOf('@')),)
+                }
             />
 
             <Text style={styles.label}>Senha *</Text>
@@ -117,6 +143,10 @@ export default function Cadastro() {
                 placeholder="Senha"
                 placeholderTextColor="#999"
                 keyboardType="default"
+                onChangeText={(value) =>                     
+                    //setPerson({password: value})
+                    setPassword(value)
+                }
             />
 
             <Text style={styles.label}> Condição de Mobilidade Reduzida *</Text>
@@ -125,6 +155,10 @@ export default function Cadastro() {
                 placeholder="Paralisia na perna direita"
                 placeholderTextColor="#999"
                 keyboardType="default"
+                onChangeText={(value) =>                     
+                    //setPerson({password: value})
+                    setCondition(value)
+                }
             />
 
             
@@ -166,7 +200,13 @@ export default function Cadastro() {
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText}>Criar Conta</Text>
+                <Text style={styles.buttonText}
+                onPress={() =>
+                    {
+                        clickSaveHandler();
+                    }
+                }
+                >Criar Conta</Text>
             </TouchableOpacity>
         </KeyboardAvoidingView>
             
