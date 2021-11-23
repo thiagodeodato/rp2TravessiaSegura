@@ -2,6 +2,7 @@ import React from 'react';
 import {Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleSheet, Image, Button, FlatList, Dimensions, ScrollView, Platform, Alert, ListItem, Icon,SafeAreaView} from 'react-native';
 import Slider from '../components/Slider';
 import { StatusBar } from 'expo-status-bar';
+import { Ionicons } from '@expo/vector-icons';
 
 
 const images = [
@@ -67,6 +68,12 @@ export default function Homepage() {
 
 
         <View style = {styles.board}>
+        
+        <Image
+        source={require('../assets/Travessia II.png')}
+        fadeDuration={1}
+        style={{ width: 50, height: 50 }}
+        />
         <Text style = {styles.textBoard}> 
         Seu tempo de travessia é:
         </Text>
@@ -80,8 +87,8 @@ export default function Homepage() {
                 activeOpacity={0.5}
                 onPress={Message}
                 />
-                
         </TouchableOpacity>
+
             <View style={styles.events}>
                 <Text style={styles.carouselText}>Principais notícias da sua cidade</Text>
                 <Slider images = {images}/>
@@ -98,9 +105,9 @@ export default function Homepage() {
 const styles = StyleSheet.create({
     board:{
         margin: 20,
-        padding: 50,
+        padding: 30,
         flex:0.5,
-        backgroundColor: '#FFC478' 
+        flexDirection: 'row',
 
     },
     
@@ -166,6 +173,10 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         borderRadius: 2
         }, 
+    
+    iconboard:{
+
+    },
 
     Hello: {
         fontWeight: 'bold',
@@ -179,6 +190,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         alignItems: 'center',
         justifyContent: 'center',
+        marginTop:15,
         fontSize: 15,
         color:'#1E3CFF',   
 
