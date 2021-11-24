@@ -20,6 +20,8 @@ export default function Cadastro( {navigation} ) {
             dbRef.child("clientesCadastro").child(email).get().then((snapshot) => {
                 if (snapshot.exists()) {
                     console.log(snapshot.val());
+                    alert('Usuário cadastrado com sucesso!');
+                    navigation.goBack();
                 } else {
                     writeUserData(email, password, condition);
                     alert('Usuário cadastrado com sucesso!');
