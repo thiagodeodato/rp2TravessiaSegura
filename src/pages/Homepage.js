@@ -3,7 +3,7 @@ import {Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleShee
 import Slider from '../components/Slider';
 import firebase from '../config/firebaseconfig';
 import { StatusBar } from 'expo-status-bar';
-import { Ionicons } from '@expo/vector-icons';
+
 
 
 const images = [
@@ -97,8 +97,8 @@ export default function Homepage( {route, navigation} ) {
         <View style = {styles.board}>
         
         <Image
-        source={require('../assets/Travessia II.png')}
-        fadeDuration={1}
+        source={require('../assets/applogo.png')}
+        fadeDuration={0}
         style={{ width: 50, height: 50 }}
         />
         <Text style = {styles.textBoard}> 
@@ -152,8 +152,8 @@ export default function Homepage( {route, navigation} ) {
         <View style = {styles.board}>
         
         <Image
-        source={require('../assets/Travessia II.png')}
-        fadeDuration={1}
+        source={require('../assets/applogo.png')}
+        fadeDuration={0}
         style={{ width: 50, height: 50 }}
         />
         <Text style = {styles.textBoard}> 

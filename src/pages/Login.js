@@ -1,11 +1,32 @@
 import React, {useState} from 'react';
 import {Button, Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleSheet, Image, ScrollView } from 'react-native';
+import firebase from '../config/firebaseconfig';
+
 
 export default function Login({ navigation }) {
 
+    const dbRef = firebase.database().ref();
+
+    
     const [userEmail, setUserEmail] = useState('');
     console.log(userEmail);
 
+    
+    function login (){
+        if(userEmail && userEmail != ''){
+            dbRef.child("clientesCadastro").child(userEmail).get().then((snapshot) => {
+                if (snapshot.exists()) {
+                    navigation.navigate('Página Inicial', userEmail);
+                    console.log(snapshot.val());
+                } else {
+                    alert("Erro ao fazer Login"); 
+                }
+            }).catch((error) => {
+                console.error(error);
+            });
+        }        
+    }
+    
     return(
     <View style={styles.container}>
         <ScrollView
@@ -22,7 +43,7 @@ export default function Login({ navigation }) {
                 placeholderTextColor="#999"
                 keyboardType="email-address"
                 onChangeText={(value) =>                     
-                    setUserEmail(value.substr(0, value.indexOf('@')),)
+                    setUserEmail(value.substr(0, value.indexOf('@')).toLowerCase())
                 }
             />
 
@@ -37,7 +58,7 @@ export default function Login({ navigation }) {
 
             <TouchableOpacity style={styles.button}>
                 <Button
-                    onPress={() => navigation.navigate('Página Inicial', userEmail)}
+                    onPress={() => login()}
                     title="Fazer Login"
                 />
             </TouchableOpacity>
