@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleSheet, Image, Button, FlatList, Dimensions, ScrollView, Platform, Alert, ListItem, Icon,SafeAreaView} from 'react-native';
 import Slider from '../components/Slider';
+import firebase from '../config/firebaseconfig';
 import { StatusBar } from 'expo-status-bar';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -21,7 +22,50 @@ const Message = () =>
 
 const { width, height } = Dimensions.get('screen');
 
-export default function Homepage() {
+var loop = 0;
+
+export default function Homepage( {route, navigation} ) {
+
+    const [expirationDays, setExpirationDays] = useState('');
+    const [personName, setPersonName] = useState('');
+    const [crossingTime, setCrossingTime] = useState('');
+
+    
+    setTimeout(function(){
+        setPersonName(route.params);
+    
+    console.log(personName);
+    
+    const dbRef = firebase.database().ref();
+
+
+
+    if(personName && personName != ''){
+        dbRef.child("clientesValidade").child(personName).get().then((snapshot) => {
+            if (snapshot.exists()) {
+                setExpirationDays(snapshot.val());
+                console.log(snapshot.val());
+            } else {
+                console.log("No data available");
+            }
+        }).catch((error) => {
+            console.error(error);
+        });
+
+        dbRef.child("clientesTravessia").child(personName).get().then((snapshot) => {
+            if (snapshot.exists()) {
+                setCrossingTime(snapshot.val());
+                console.log(snapshot.val());
+            } else {
+                console.log("No data available");
+            }
+        }).catch((error) => {
+            console.error(error);
+        });
+    }
+    
+    }, 150);
+    
 
     return (
     <View style= {styles.container}> 
@@ -33,8 +77,34 @@ export default function Homepage() {
         <View style={styles.container}>
         <View>
         <Text style = {styles.Hello}> 
-        Olá, João
+        Olá, {personName}
         </Text>
+        </View>
+
+        <View style = {styles.board}>
+
+        <Image
+        source={require('../assets/Relogio.jpg')}
+        fadeDuration={0}
+        style={{ width: 50, height: 50 }}
+        />
+        <Text style = {styles.textClock}> 
+        Dias restantes para utilização do token: {expirationDays}
+        </Text>
+
+        </View>
+
+        <View style = {styles.board}>
+        
+        <Image
+        source={require('../assets/Travessia II.png')}
+        fadeDuration={1}
+        style={{ width: 50, height: 50 }}
+        />
+        <Text style = {styles.textBoard}> 
+        Seu tempo de travessia é: {crossingTime} segundos.
+        </Text>
+
         </View>
 
         <TouchableOpacity style={styles.button}>
@@ -59,13 +129,25 @@ export default function Homepage() {
 
         <View>
         <Text style = {styles.Hello}> 
-        Olá, João
+        Olá, {personName}
         </Text>
         </View>
 
 
       
 
+        <View style = {styles.board}>
+
+        <Image
+        source={require('../assets/Relogio.jpg')}
+        fadeDuration={0}
+        style={{ width: 50, height: 50 }}
+        />
+        <Text style = {styles.textClock}> 
+        Dias restantes para utilização do token: {expirationDays}
+        </Text>
+
+        </View>
 
         <View style = {styles.board}>
         
@@ -75,7 +157,7 @@ export default function Homepage() {
         style={{ width: 50, height: 50 }}
         />
         <Text style = {styles.textBoard}> 
-        Seu tempo de travessia é:
+        Seu tempo de travessia é: {crossingTime} segundos.
         </Text>
 
         </View>
@@ -104,14 +186,12 @@ export default function Homepage() {
 
 const styles = StyleSheet.create({
     board:{
-        margin: 20,
-        padding: 30,
-        flex:0.5,
+        margin: 10,
+        padding: 10,
         flexDirection: 'row',
-
     },
-    
-    
+
+
     button:{
         alignItems: 'center',
         padding: 10,
@@ -121,7 +201,7 @@ const styles = StyleSheet.create({
     buttonCell:{
         marginTop: 10,
         backgroundColor: '#FFC478',
-        
+
     },
 
     container: {
@@ -173,26 +253,29 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         borderRadius: 2
         }, 
-    
-    iconboard:{
+
+    textClock:{
+        fontWeight: 'bold',
+        marginTop:10,
+        fontSize: 15,
+        marginLeft: 10,
+        color:'#1E3CFF',
 
     },
 
     Hello: {
         fontWeight: 'bold',
-        alignItems: 'center',
-        justifyContent: 'center',
+
         fontSize: 20,
         marginBottom: 5
     },
 
     textBoard:{
         fontWeight: 'bold',
-        alignItems: 'center',
-        justifyContent: 'center',
+        marginLeft: 10,
         marginTop:15,
         fontSize: 15,
-        color:'#1E3CFF',   
+        color:'#1E3CFF',
 
     },
 

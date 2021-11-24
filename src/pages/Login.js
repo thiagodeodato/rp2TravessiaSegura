@@ -1,7 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Button, Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleSheet, Image, ScrollView } from 'react-native';
 
 export default function Login({ navigation }) {
+
+    const [userEmail, setUserEmail] = useState('');
+    console.log(userEmail);
+
     return(
     <View style={styles.container}>
         <ScrollView
@@ -17,6 +21,9 @@ export default function Login({ navigation }) {
                 placeholder="Seu e-mail"
                 placeholderTextColor="#999"
                 keyboardType="email-address"
+                onChangeText={(value) =>                     
+                    setUserEmail(value.substr(0, value.indexOf('@')),)
+                }
             />
 
             <Text style={styles.label}>Senha *</Text>
@@ -30,7 +37,7 @@ export default function Login({ navigation }) {
 
             <TouchableOpacity style={styles.button}>
                 <Button
-                    onPress={() => navigation.navigate('Página Inicial')}
+                    onPress={() => navigation.navigate('Página Inicial', userEmail)}
                     title="Fazer Login"
                 />
             </TouchableOpacity>

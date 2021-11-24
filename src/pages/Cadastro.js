@@ -16,9 +16,19 @@ export default function Cadastro() {
 
     const clickSaveHandler = () => {
         if(email !== '' && password !== ''){
+
+            dbRef.child("clientesCadastro").child(email).get().then((snapshot) => {
+                if (snapshot.exists()) {
+                    console.log(snapshot.val());
+                } else {
+                    writeUserData(email, password, condition);
+                }
+              }).catch((error) => {
+                console.error(error);
+              });
 /*             console.log(email);
             console.log(password); */
-            writeUserData(email, password, condition);
+            
         }
     }
 
@@ -45,17 +55,6 @@ export default function Cadastro() {
     //console.log(dbRef);
 
     //TESTE DE CONEXAO PARA O CLIENTE THIAGO
-
-
-    dbRef.child("clientesCadastro").child('thiago').get().then((snapshot) => {
-        if (snapshot.exists()) {
-          //console.log(snapshot.val());
-        } else {
-          //console.log("No data available");
-        }
-      }).catch((error) => {
-        //console.error(error);
-      });
 
     /* var radioValue = 0; */
 
