@@ -1,7 +1,9 @@
 {
   "expo": {
-    "name": "rp2app",
+    "name": "Travessia Segura",
     "slug": "rp2app",
+    "privacy": "public",
+    "description": "An mvp app for safer pedestrian crossings",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
