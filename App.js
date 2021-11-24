@@ -48,7 +48,7 @@ export default function App() {
           options={{
             title: 'Página Inicial',
             headerLeft: () => <ActionBarImage/>,
-            headerBackVisible: true, // tirar na apresentação 
+            //headerBackVisible: true, // tirar na apresentação 
             headerRight: () => <Notification_bell/>
           }}/>
     </Stack.Navigator>

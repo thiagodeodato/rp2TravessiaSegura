@@ -199,7 +199,7 @@ const styles = StyleSheet.create({
     },
 
     buttonCell:{
-        marginTop: 10,
+        marginTop: 20,
         backgroundColor: '#FFC478',
 
     },
@@ -214,7 +214,7 @@ const styles = StyleSheet.create({
     events:{
         flex: 1,
         alignItems: 'center',
-        margin: 10
+        marginTop: 40
     },
 
     carouselText: {
