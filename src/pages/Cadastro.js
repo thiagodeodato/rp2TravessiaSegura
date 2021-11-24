@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleSheet, Image, Button, ScrollView, Input } from 'react-native';
+import {Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View, StyleSheet, Image, Button, ScrollView, Platform, Input } from 'react-native';
 import * as DocumentPicker from 'expo-document-picker';
 import RadioButton from '../components/RadioButton';
 import firebase from '../config/firebaseconfig';
@@ -29,6 +29,8 @@ export default function Cadastro() {
 /*             console.log(email);
             console.log(password); */
             
+        } else{
+            alert('É necessário preencher todos os campos obrigatórios (*)');
         }
     }
 

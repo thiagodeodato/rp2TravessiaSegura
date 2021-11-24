@@ -19,12 +19,14 @@ export default function Login({ navigation }) {
                     navigation.navigate('Página Inicial', userEmail);
                     console.log(snapshot.val());
                 } else {
-                    alert("Erro ao fazer Login"); 
+                    alert('Erro ao fazer Login. Usuario inexistente ou senha incorreta');
                 }
             }).catch((error) => {
                 console.error(error);
             });
-        }        
+        } else{
+            alert('Erro ao fazer Login. Preencha um email válido');
+        }
     }
     
     return(
