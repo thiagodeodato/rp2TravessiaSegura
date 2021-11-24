@@ -6,7 +6,7 @@ import firebase from '../config/firebaseconfig';
 //import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 //import Checkbox from "./Checkbox";
 
-export default function Cadastro() {
+export default function Cadastro( {navigation} ) {
     
     const [person, setPerson] = useState({ email: '', password: ''});
     const [email, setEmail] = useState('');
@@ -22,13 +22,12 @@ export default function Cadastro() {
                     console.log(snapshot.val());
                 } else {
                     writeUserData(email, password, condition);
+                    alert('Usuário cadastrado com sucesso!');
+                    navigation.goBack();
                 }
               }).catch((error) => {
                 console.error(error);
-              });
-/*             console.log(email);
-            console.log(password); */
-            
+              });            
         } else{
             alert('É necessário preencher todos os campos obrigatórios (*)');
         }
